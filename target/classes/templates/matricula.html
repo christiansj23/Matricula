@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Matricula</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!-- <link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+ -->
+
+
+<link href="//bootswatch.com/4/flatly/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+<script
+	src="//bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" th:src="@{/js/cliente.js}"></script>
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<p></p>
+	<h1 align="center">Registro de matricula</h1>
+	<hr />
+	<p></p>
+	<div class="container">
+		<table align="center">
+			<thead>
+				<tr>
+					<th width="50%">
+						<form th:action="@{/matricula/registrar}" method="post"
+							th:object="${matricula}">
+							<div class="form-group">
+								<label for="idMatricula">ID:</label> <input type="text"
+									th:field="*{idMatricula}"></input>
+
+								<div class="form-group">
+
+									<label for="fechaMatricula">Fecha:</label> <input type="date"
+										th:field="*{fechaMatricula}" class="form-control" id="fecha"></input>
+									<p:calendar
+										value="#{MatriculaController.matricula.fechaMatricula}"
+										required="true" />
+
+
+									<div class="alert alert-danger"
+										th:if="${#fields.hasErrors('fechaMatricula')}"
+										th:errors="*{fechaMatricula}"></div>
+										
+										
+                               <label for="semestre">Semestre Academico:</label> <input
+										type="text" th:field="*{semestre}"
+										class="form-control" id="semestre"></input>
+
+									<div class="alert alert-danger"
+										th:if="${#fields.hasErrors('semestre')}"
+										th:errors="*{semestre}"></div>
+									
+
+									<label for="alumno" class="col-sm-2 col-form-label">Alumno:</label>
+									<select class="form-control"
+										th:field="*{alumno.idAlumno}">
+										<option th:each="c: ${listaAlumnos}"
+											th:value="${c.idAlumno}" th:text="${c.nombreAlumno}"
+											th:selected="(${c.idAlumno} == *{alumno.idAlumno})"></option>
+									</select> <label for="docente" class="col-sm-2 col-form-label">Docente:</label>
+									<select class="form-control" th:field="*{docente.idDocente}">
+										<option th:each="c: ${listaDocentes}" th:value="${c.idDocente}"
+											th:text="${c.nombreDocente}"
+											th:selected="(${c.idDocente} == *{docente.idDocente})"></option>
+									</select> <label for="curso" class="col-sm-2 col-form-label">Curso:</label>
+									<select class="form-control"
+										th:field="*{curso.idCurso}">
+										<option th:each="c: ${listaCursos}"
+											th:value="${c.idCurso}"
+											th:text="${c.nombreCurso}"
+											th:selected="(${c.idCurso} == *{curso.idCurso})"></option>
+									</select>
+
+								</div>
+							</div>
+							<button type="submit" class="btn btn-info">Aceptar</button>
+							<a href="/matricula/listar" class="btn btn-danger">Cancelar</a>
+						</form>
+						</th>
+						<th> </th> 
+					<th>
+					<img th:src="@{/imagenes/matricula.jpg}" width="300"
+						height="500" align="middle" alt="matricula-jpg"></img>
+					</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

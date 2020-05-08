@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Comprobantes</title>
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js"></script> 
+<!-- 
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+-->
+
+<link
+	href="//bootswatch.com/4/flatly/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+<script
+	src="//bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+	
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+	<header th:replace="fragments/header :: header"></header>
+
+<p></p>
+	<div class="container">
+		<form th:action="@{/comprobante/save}" th:object="${comprobante}" method="post">
+			<div class="card">
+				<div class="card-header text-white bg-info">Comprobante</div>
+				<div class="card-body">
+					<div class="form-group row">
+						<label for="patient" class="col-sm-2 col-form-label">Cliente</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control-plaintext" id="patient" />
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="medicinename" class="col-sm-2 col-form-label">Producto</label>
+						<div class="col-sm-6">
+							<input type="text" name="medicinename" class="form-control"
+								id="medicinename" placeholder="Producto a buscar" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-sm-6">
+					<a th:href="@{/cliente/listar}" class="btn btn-primary">Regresar</a>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-header text-white bg-info">Detalle</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table id="loadMedicaments" class="table table-striped">
+							<thead class="bg-primary text-white">
+								<tr>
+									<th>Nombre</th>
+									<th>Precio</th>
+									<th>Cantidad</th>
+									<th>Total</th>
+									<th>Descuento</th>
+									<th>Promocion</th>
+									<th>Eliminar</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+
+					<table th:replace="voucher/template-voucherdetail::detailVoucher"></table>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-sm-6">
+					<h5 id="total">
+						Total <span class="badge badge-primary" id="gran_total">0</span>
+					</h5>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-sm-6">
+					<input type="submit" value="Registrar" class="btn btn-primary" />
+				</div>
+			</div>
+
+		</form>
+	</div>
+
+	<footer th:replace="fragments/footer :: footer"></footer>
+	<script th:replace="voucher/js/autocomplete-medicines::javascript"></script>
+
+</body>
+</html>

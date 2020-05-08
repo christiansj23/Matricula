@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8"></meta>
+<title>Error</title>
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js"></script>
+<!--
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	-->
+	<link
+	href="//bootswatch.com/4/flatly/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+<script
+	src="//bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+	
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+
+	<div th:replace="fragments/header :: header"></div>
+
+	<div class="container py-4">
+<img id="imagen" alt="error-403" align="middle" width="400"
+       height="341" src="https://us.123rf.com/450wm/brokenhill/brokenhill1801/brokenhill180100025/92759762-
+la-muestra-del-icono-de-la-parada-en-el-ejemplo-blanco-del-vector-del-fondo-.jpg?ver=6"/>
+		<div class="card bg-danger text-white">
+			<div class="card-header" align="center">¡Acceso denegado!</div>
+			<div class="card-body">			
+				<h5 class="card-title" align="center">
+					El usuario <span th:text="${#authentication.name}"></span>, NO TIENE ACCESO PARA ESTE RECURSO.
+				</h5>				
+
+			</div>
+		</div>
+	</div>
+
+	
+</body>
+</html>

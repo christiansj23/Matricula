@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Curso</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!-- <link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+ -->
+
+
+<link href="//bootswatch.com/4/flatly/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+<script
+	src="//bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" th:src="@{/js/cliente.js}"></script>
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<p></p>
+	<h1 align="center">Registro de curso</h1>
+	<hr />
+	<p></p>
+	<div class="container">
+		<table align="center">
+			<thead>
+				<tr>
+					<th width="50%">
+						<form th:action="@{/curso/registrar}" method="post"
+							th:object="${curso}">
+							<div class="form-group">
+								<label for="idCurso">ID:</label> <input type="text"
+									th:field="*{idCurso}"></input>
+
+								<div class="form-group">
+
+									<label for="nombreCurso">Nombre:</label> <input type="text"
+										th:field="*{nombreCurso}" class="form-control" id="nombre"></input>
+									<div class="alert alert-danger"
+										th:if="${#fields.hasErrors('nombreCurso')}"
+										th:errors="*{nombreCurso}"></div>
+										
+                                     <label for="carreraCurso">Carrera:</label> <input type="text"
+										th:field="*{carreraCurso}" class="form-control" id="carrera"></input>
+									<div class="alert alert-danger"
+										th:if="${#fields.hasErrors('carreraCurso')}"
+										th:errors="*{carreraCurso}"></div>
+										
+										<label for="creditosCurso">Creditos:</label> <input type="text"
+										th:field="*{creditosCurso}" class="form-control" id="creditos"></input>
+									<div class="alert alert-danger"
+										th:if="${#fields.hasErrors('creditosCurso')}"
+										th:errors="*{creditosCurso}"></div>
+	
+
+									<label for="docente" class="col-sm-2 col-form-label">Docente:</label>
+									<select class="form-control"
+										th:field="*{docente.idDocente}">
+										<option th:each="c: ${listaDocentes}"
+											th:value="${c.idDocente}" th:text="${c.nombreDocente}"
+											th:selected="(${c.idDocente} == *{docente.idDocente})"></option>
+									
+									</select>
+
+								</div>
+							</div>
+							<button type="submit" class="btn btn-info">Aceptar</button>
+							<a href="/curso/listar" class="btn btn-danger">Cancelar</a>
+						</form>
+						</th>
+						<th> </th> 
+					<th>
+					<img th:src="@{/imagenes/curso.png}" width="400"
+						height="600" align="middle" alt="curso-png"></img>
+					</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

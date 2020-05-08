@@ -1,0 +1,45 @@
+.bg-color
+{
+	background-color: #E6E6E8;
+}
+
+.index-foto-format
+{
+	 position: absolute;
+	 width: 622px;
+	 height: 600px;
+     top:50%;
+     left: 8%;
+     margin-top:-16.2%;
+}
+
+.index-header-format
+{
+	position: absolute;
+	width: 880px;
+	height: 224px;
+	top:50%;
+	margin-top:-9.5%;
+	margin-left:46.5%;
+}
+
+.btn.btn-outline-success {
+  color: #fff;
+  background-color: #166E8C;
+}
+.btn.btn-outline-success:hover, .btn .btn-outline-success:focus, .btn .btn-outline-success:active, .btn .btn-outline-success.active, .open>.dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #21A1CC !important;
+}
+
+.btn-index-format
+{
+	position: absolute;
+    border: none;
+    width: 400px;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    margin-top: 30%;
+    margin-left:58.4%;
+}
