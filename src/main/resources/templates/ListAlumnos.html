@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Alumnos</title>
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.js"></script> 
+<!-- 
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+-->
+
+<link
+	href="//bootswatch.com/4/flatly/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+<script
+	src="//bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+	
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+<p></p>
+	<h1 align="center">Listado de alumnos</h1>
+	<hr/>
+	<p></p>
+	<div class="container">
+		<form id="myform">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<a th:href="@{/alumno/irRegistrar}" id="add-row" type="button"
+						class="btn btn-primary btn-md left-block"> <span
+						class="glyphicon glyphicon-plus"></span> Agregar Alumno
+					</a> <a th:href="@{/alumno/irBuscar}" id="add-row" type="button"
+						class="btn btn-success btn-md left-block"> <span
+						class="glyphicon glyphicon-search"></span> Buscar Alumno
+					</a>
+						<p></p>	
+					<table class="table table-bordered table-hover table-striped"
+						id="tab_logic">
+						<thead>
+							<tr class="table-primary">
+								<th class="text-center">ID</th>
+								<th class="text-center">NOMBRE</th>
+								<th class="text-center">APELLIDO</th>
+								<th class="text-center">CICLO</th>
+								<th class="text-center">OPERACION</th>
+								<th class="text-center">OPERACION</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="alumno: ${listaAlumnos}">
+								<td><a class="btn btn-primary btn-xs"
+										th:href="@{/alumno/ver/} + ${alumno.idAlumno}"
+										th:text="${alumno.idAlumno}"></a></td>
+								<td th:text="${alumno.nombreAlumno}"></td>
+								<td th:text="${alumno.apellidoAlumno}"></td>
+								<td th:text="${alumno.cicloAlumno}"></td>
+								<td><a th:href="@{/alumno/eliminar?id=}+${alumno.idAlumno}">Eliminar</a></td>
+								<td><a th:href="@{'/alumno/modificar/' + ${alumno.idAlumno}}">Modificar</a></td>
+
+
+							</tr>
+						</tbody>
+
+					</table>
+
+				</div>
+			</div>
+
+		</form>
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8"></meta>
+<!-- 
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	 -->
+	 
+<link
+	href="//bootswatch.com/4/sketchy/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+<script
+	src="//bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+	
+</head>
+<body>
+	<div th:fragment="header">
+		<!-- this is header -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" th:href="@{/matricula/listar}">SISTEMA DE MATRICULA</a>
+					<div style="visibility: hidden">---------</div>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"> <a> </a></li>
+					<div style="visibility: hidden">---------</div>
+						<li class="nav-item active">
+						<a th:href="@{/alumno/listar}" style="color:white">Alumnos</a>
+						</li>
+						
+						<div style="visibility: hidden">-------</div>
+						
+						<li class="nav-item active">
+						<a th:href="@{/docente/listar}" style="color:white">Docentes</a>
+						</li>
+						<div style="visibility: hidden">-------</div>
+						<li class="nav-item active">
+						<a th:href="@{/curso/listar}" style="color:white">Cursos </a>
+						</li>
+						<div style="visibility: hidden">-------</div>
+						<li class="nav-item active">
+						<a th:href="@{/matricula/listar}" style="color:white">Matricula</a>
+						</li>
+						
+					
+						<div style="visibility: hidden">----------------------------------------------------------</div>					
+						<div style="visibility: hidden">---</div>					
+					<div style="visibility: hidden">---</div>
+					<div style="visibility: hidden">---</div>
+					<div style="visibility: hidden">---</div>
+						<li class="active"><form id="logoutForm"
+								th:action="@{/logout}" method="post">
+								<button class="btn btn-danger"
+									onclick="document.getElementById('logoutForm').submit();"
+									type="submit">
+									Cerrar sesión									
+									</button>
+							</form></li>
+
+					</ul>
+				</div>
+				<!-- Logout Modal-->
+				<div class="modal fade" id="exampleModal" tabindex="-1"
+					role="dialog" aria-labelledby="exampleModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">¿Estás seguro de que deseas salir?</h5>
+								<button class="close" type="button" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">x</span>
+								</button>
+							</div>
+							<div class="modal-body">Le recordamos que toda modificación está almacenado en nuestra base de datos.</div>
+							<div class="modal-footer">
+								<form id="logoutForm" th:action="@{/logout}" method="post">
+									<button class="btn btn-secondary" type="button"
+										data-dismiss="modal">Cancelar</button>
+									<button class="btn btn-primary"
+										onclick="document.getElementById('logoutForm').submit();"
+										type="submit">Salir</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>
+</body>
+</html>

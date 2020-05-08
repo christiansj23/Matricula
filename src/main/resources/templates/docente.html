@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Docente</title>
+<!--
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+-->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link href="//bootswatch.com/4/flatly/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css"></link>
+<script
+	src="//bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<p></p>
+	<h1 align="center">Registro de docente</h1>
+	<hr />
+	<p></p>
+	<div class="container">
+		<table align="center">
+			<thead>
+				<tr>
+					<th width="60%">
+						<form th:action="@{/docente/registrar}" method="post"
+							th:object="${docente}">
+
+							<div class="form-group">
+								<label for="idDocente">ID:</label> <input type="text"
+									th:field="*{idDocente}"></input>
+
+								<div class="form-group">
+									<label for="nombreDocente">Nombre:</label> <input type="text"
+										th:field="*{nombreDocente}" class="form-control" id="nombre"></input>
+
+									<div class="alert alert-danger"
+										th:if="${#fields.hasErrors('nombreDocente')}"
+										th:errors="*{nombreDocente}"></div>
+
+
+									<label for="apellidoDocente">Apellido Docente:</label> <input
+										type="text" th:field="*{apellidoDocente}"
+										class="form-control" id="nombreapellido"></input>
+
+									<div class="alert alert-danger"
+										th:if="${#fields.hasErrors('apellidoDocente')}"
+										th:errors="*{apellidoDocente}"></div>
+
+
+								</div>
+							</div>
+							<button type="submit" class="btn btn-info">Aceptar</button>
+							<a href="/docente/listar" class="btn btn-danger">Cancelar</a>
+						</form>
+					</th>
+					<th> </th>
+					<th><img th:src="@{/imagenes/docente.jpg}" width="320"
+						height="440" align="middle" alt="docente-jpg"></img></th>
+
+
+				</tr>
+			</thead>
+		</table>
+	</div>
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
